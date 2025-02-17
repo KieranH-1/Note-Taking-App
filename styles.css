@@ -1,0 +1,117 @@
+body{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav{
+  background-color: #333;
+  color: white;
+  padding: 7px;
+  height: 30px;
+  width: auto;
+}
+
+nav .login{
+  float: inline-end;
+  color: white;
+  background-color: #333;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0 7px;
+  text-decoration: none;
+}
+
+nav .login:hover{
+  background-color: #555;
+}
+
+nav .register{
+  float: inline-end;
+  color: white;
+  background-color: #333;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+nav .register:hover{
+  background-color: #555;
+}
+
+nav .notes{
+  float: inline-start;
+  color: white;
+  background-color: #333;
+  border: 1px solid white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+nav .notes:hover{
+  background-color: #555;
+}
+
+.login-form{
+  margin: 0 auto;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+h1{
+  text-align: center;
+}
+
+.input-boxes{
+  display: flex;
+  height: 100px;
+  margin: 5px auto;
+  padding: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.email-label{
+  margin-left: 30px;
+}
+#username, #email, #password, #note{
+  margin: 5px auto;
+  padding: 3px;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+#note{
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+#login-button, #register-button, #save-note-button{
+  margin: 5px 50px;
+  padding: 5px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+}
+
+#login-button:hover, #register-button:hover, #save-note-button:hover{
+  background-color: #555;
+}
+
+.note-form{
+  margin: 0 auto;
+  margin-top: 25px;
+  height: fit-content;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
