@@ -1,10 +1,10 @@
-body{
+body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
-nav{
+nav {
   background-color: #333;
   color: white;
   padding: 7px;
@@ -12,7 +12,7 @@ nav{
   width: auto;
 }
 
-nav .login{
+nav .login {
   float: inline-end;
   color: white;
   background-color: #333;
@@ -23,11 +23,11 @@ nav .login{
   text-decoration: none;
 }
 
-nav .login:hover{
+nav .login:hover {
   background-color: #555;
 }
 
-nav .register{
+nav .register {
   float: inline-end;
   color: white;
   background-color: #333;
@@ -37,11 +37,11 @@ nav .register{
   text-decoration: none;
 }
 
-nav .register:hover{
+nav .register:hover {
   background-color: #555;
 }
 
-nav .notes{
+nav .notes {
   float: inline-start;
   color: white;
   background-color: #333;
@@ -51,18 +51,18 @@ nav .notes{
   text-decoration: none;
 }
 
-nav .notes:hover{
+nav .notes:hover {
   background-color: #555;
 }
 
-main{
+main {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
 }
 
-.login-form{
+.login-form {
   margin: 0 auto;
   width: 300px;
   padding: 20px;
@@ -71,11 +71,11 @@ main{
   margin-top: 25px;
 }
 
-h1{
+h1 {
   text-align: center;
 }
 
-.input-boxes{
+.input-boxes {
   display: flex;
   height: 100px;
   margin: 5px auto;
@@ -84,23 +84,28 @@ h1{
   justify-content: center;
 }
 
-.email-label{
+.email-label {
   margin-left: 30px;
 }
-#username, #email, #password, #note{
+#username,
+#email,
+#password,
+#note {
   margin: 5px auto;
   padding: 3px;
   border: 1px solid #333;
   border-radius: 4px;
 }
 
-#note{
+#note {
   width: 100%;
   max-width: 100%;
   min-width: 100%;
 }
 
-#login-button, #register-button, #save-note-button{
+#submit,
+#register-button,
+#save-note-button {
   margin: 5px 50px;
   padding: 5px;
   border: 1px solid #333;
@@ -109,11 +114,13 @@ h1{
   color: white;
 }
 
-#login-button:hover, #register-button:hover, #save-note-button:hover{
+#login-button:hover,
+#register-button:hover,
+#save-note-button:hover {
   background-color: #555;
 }
 
-.note-form{
+.note-form {
   margin: 0 auto;
   margin-top: 25px;
   height: fit-content;
@@ -126,4 +133,24 @@ h1{
 .ash {
   height: 200px;
   width: 170px;
+}
+
+.userInfo {
+  margin: 0 auto;
+  width: 300px;
+  padding: 20px;
+  margin-top: 25px;
+  font-weight: bold;
+  color: grey;
+  text-align: center;
+}
+
+.errorSection {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
+  padding: 20px;
+  margin-top: 25px;
 }
