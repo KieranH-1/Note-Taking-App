@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <nav>
+    <a class="register" href="register.html">Register</a>
+    <a class="notes" href="note.html">Notes</a>
+    <a class="login" href="login.html">Login</a>
+  </nav>
+
+  <main>
+    <h1 id="error-section"></h1>
+    <form id="register-form">
+      <h1 class="login-logo">Register</h1>
+      <div class="input-boxes">
+        <input type="text" id="email" placeholder="Email" required><br><br>
+
+        <input type="text" id="username" placeholder="Username"><br><br>
+
+        <input type="password" id="password" placeholder="Password" required><br><br>
+
+        <input type="submit" id="submit" value="Register"></input>
+      </div>
+    </form>
+     <h1 id="user-info"></h1>
+  </main>
+  <script src="../models/user.js"></script>
+</body>
+</html>

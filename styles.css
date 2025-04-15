@@ -62,10 +62,13 @@ main {
   align-items: center;
 }
 
-.login-form {
+#login-form, #register-form, #note-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
   width: 300px;
-  padding: 20px;
+  padding: 50px;
   border: 1px solid #333;
   border-radius: 5px;
   margin-top: 25px;
@@ -114,20 +117,8 @@ h1 {
   color: white;
 }
 
-#login-button:hover,
-#register-button:hover,
-#save-note-button:hover {
+#submit:hover{
   background-color: #555;
-}
-
-.note-form {
-  margin: 0 auto;
-  margin-top: 25px;
-  height: fit-content;
-  width: 300px;
-  padding: 20px;
-  border: 1px solid #333;
-  border-radius: 5px;
 }
 
 .ash {
@@ -135,7 +126,7 @@ h1 {
   width: 170px;
 }
 
-.userInfo {
+#user-info {
   margin: 0 auto;
   width: 300px;
   padding: 20px;
@@ -145,12 +136,10 @@ h1 {
   text-align: center;
 }
 
-.errorSection {
+#error-section {
   color: red;
   font-weight: bold;
-  text-align: center;
   margin: 0 auto;
-  width: 300px;
   padding: 20px;
   margin-top: 25px;
 }
