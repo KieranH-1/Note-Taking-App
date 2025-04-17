@@ -1,0 +1,28 @@
+{
+  "name": "note-taking-app",
+  "version": "1.0.0",
+  "description": "simple app for taking notes",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KieranH-1/Note-Taking-App.git"
+  },
+  "author": "Kieran Heaton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KieranH-1/Note-Taking-App/issues"
+  },
+  "homepage": "https://github.com/KieranH-1/Note-Taking-App#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
