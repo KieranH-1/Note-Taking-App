@@ -1,41 +1,21 @@
-let noteForm = document.getElementById("note-form");
-noteForm.addEventListener('submit', addNote);
+const con = require("../models/db_connect")
 
-function addNote(e) {
-    e.preventDefault();
-
-    let noteText = document.getElementById('note-text').value;
-    let noteList = document.getElementById("note-list");
-    let errorSection = document.getElementById("error-section");
-
-    if (validString(noteText)) {
-        errorSection.innerHTML = `Please enter a valid note!!!`;
-    } else {
-        errorSection.innerHTML = "";
-        const note = new Note(noteText);
-
-        noteList.innerHTML += `Note: ${note.getText()} <br>`;
-
-        console.log(note);
-    }
-
-    document.getElementById("note-text").value = "";
+async function createTable() {
+  let sql = `CREATE TABLE IF NOT EXISTS Note (
+      CreationTime VARCHAR(12) NOT NULL,
+      Text VARCHAR(255) NOT NULL,
+      LengthOfTiemPosted VARCHAR(45) NOT NULL GENERATED,
+      Picture VARCHAR(255) NOT NULL,
+      CONSTRAINT notePK PRIMARY KEY(NoteID)
+      CONSTRAINT noteFK FOREIGN KEY (UserID) REFERENCES User(UserID)
+    );`
+  await con.query(sql)  
 }
+createTable()
 
-function validString(str) {
-    return str == "";
+async function getAllNotes() {
+    let sql = `SELECT * FROM User`
+    return await con.query(sql)
 }
-
-class Note{
-    constructor(text) {
-        this.text = text;
-    }
-
-    getText() {
-        return this.text;
-    }
-
-    setText(text) {
-        this.text = text;
-    }
-}
+  
+module.exports = { getAllNotes }

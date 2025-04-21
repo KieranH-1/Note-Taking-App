@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 
 const userRoutes = require("./server/routes/user")
-const recipeRoutes = require("./server/routes/note")
+const noteRoutes = require("./server/routes/note")
 
 //CORS middleware
 app.use(function(req, res, next) {

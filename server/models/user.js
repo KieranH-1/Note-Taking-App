@@ -1,98 +1,20 @@
+const con = require("../models/db_connect")
 
-
-if (document.getElementById("register-form") !==  null){
-  let registerForm = document.getElementById("register-form");
-registerForm.addEventListener('submit', register);
+async function createTable() {
+  let sql = `CREATE TABLE IF NOT EXISTS User (
+      UserID INT NOT NULL AUTO_INCREMENT,
+      Username VARCHAR(255) NOT NULL UNIQUE,
+      Email VARCHAR(255) NOT NULL UNIQUE,
+      Password VARCHAR(255) NOT NULL,
+      CONSTRAINT userPK PRIMARY KEY(UserID)
+    );`
+  await con.query(sql)  
 }
+createTable()
 
-if (document.getElementById("login-form") !==  null){
-let loginForm = document.getElementById("login-form");
-loginForm.addEventListener('submit', login);
-}
-
-function register(e) {
-  e.preventDefault();
-
-  let username = document.getElementById('username').value;
-  let password = document.getElementById('password').value;
-  let email = document.getElementById('email').value;
-  let errorSection = document.getElementById("error-section");
-  let userInfo = document.getElementById("user-info");
-
-  if (validString(username) || validString(password)) {
-    userInfo.innerHTML = ``;
-    errorSection.innerHTML = `Please enter a valid username, email, and/ password!!!`;
-  } else {
-    errorSection.innerHTML = "";
-    const user = new User(0,
-      username,
-      password,
-      email
-    );
-
-    userInfo.innerHTML = `Welcome ${user.username} of email ${user.email}`;
-
-    console.log(user);
+async function getAllUsers() {
+    let sql = `SELECT * FROM User`
+    return await con.query(sql)
   }
-
-  document.getElementById("username").value = "";
-  document.getElementById("password").value = "";
-}
-
-function login(e) {
-  e.preventDefault();
-
-  let username = document.getElementById('username').value;
-  let password = document.getElementById('password').value;
-  let errorSection = document.getElementById("error-section");
-  let userInfo = document.getElementById("user-info");
-
-  if (validString(username) || validString(password)) {
-    userInfo.innerHTML = ``;
-    errorSection.innerHTML = `Please enter a valid username and password!!!`;
-  } else {
-    errorSection.innerHTML = "";
-    const user = new User(
-      0,
-      username,
-      password,
-      null
-    );
-
-    userInfo.innerHTML = `Welcome ${user.username}`;
-
-    console.log(user);
-  }
-
-  document.getElementById("username").value = "";
-  document.getElementById("password").value = "";
-}
-
-function validString(str) {
-  return str == "";
-}
-
-class User {
-  constructor(id, username, password, email) {
-    this.id = id;
-    this.username = username;
-    this.password = password;
-    this.email = email;
-  }
-
-  getUserName() {
-    return this.username;
-  }
-
-  getPassword() {
-    return this.password;
-  }
-
-  setUserName(username) {
-    this.username = username;
-  }
-
-  setPassword(password) {
-    this.password = password;
-  }
-}
+  
+  module.exports = { getAllUsers }
