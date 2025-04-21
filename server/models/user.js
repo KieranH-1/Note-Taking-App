@@ -1,7 +1,7 @@
-const con = require("../models/db_connect");
+const con = require("./db_connect");
 
 async function createTable() {
-  let sql = `CREATE TABLE IF NOT EXISTS user (
+  let sql = `CREATE TABLE IF NOT EXISTS users (
       userID INT NOT NULL AUTO_INCREMENT,
       username VARCHAR(255) NOT NULL UNIQUE,
       email VARCHAR(255) NOT NULL UNIQUE,
@@ -13,7 +13,7 @@ async function createTable() {
 createTable();
 
 async function getAllUsers() {
-  let sql = `SELECT * FROM User`;
+  let sql = `SELECT * FROM users`;
   return await con.query(sql);
 }
 

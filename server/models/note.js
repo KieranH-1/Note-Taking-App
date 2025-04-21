@@ -1,20 +1,21 @@
-const con = require("../models/db_connect");
+const con = require("./db_connect");
 
 async function createTable() {
-  let sql = `CREATE TABLE IF NOT EXISTS note (
+  let sql = `CREATE TABLE IF NOT EXISTS notes (
       noteID INT NOT NULL AUTO_INCREMENT,
       creationTime VARCHAR(12) NOT NULL,
       text VARCHAR(255) NOT NULL,
       picture VARCHAR(255) NOT NULL,
       PRIMARY KEY(noteID),
-      CONSTRAINT userFK FOREIGN KEY(userFK) REFERENCES users(userID)
+      userID INT NOT NULL,
+      CONSTRAINT userFK FOREIGN KEY(userID) REFERENCES users(userID)
     );`;
   await con.query(sql);
 }
 createTable();
 
 async function getAllNotes() {
-  let sql = `SELECT * FROM User`;
+  let sql = `SELECT * FROM notes`;
   return await con.query(sql);
 }
 
