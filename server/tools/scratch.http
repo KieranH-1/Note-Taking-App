@@ -1,0 +1,26 @@
+##########################
+# Users Controller
+##########################
+
+###
+GET http://localhost:3000/users/getUsers
+
+###
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+  "username": "Johnny_Jets",
+  "email": "john.doe@email.com",
+  "password": "password123"
+}
+
+
+
+###########################
+# Notes Controller
+###########################
+
+###
+GET http://localhost:3000/notes/getNotes
+

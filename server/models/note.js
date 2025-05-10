@@ -18,5 +18,27 @@ async function getAllNotes() {
   let sql = `SELECT * FROM notes`;
   return await con.query(sql);
 }
+async function addNote(note) {
+  let sql = `INSERT INTO notes (creationTime, text, picture, userID) VALUES (?, ?, ?, ?)`;
+  return await con.query(sql, [
+    note.creationTime,
+    note.text,
+    note.picture,
+    note.userID,
+  ]);
+}
+async function updateNote(note) {
+  let sql = `UPDATE notes SET creationTime = ?, text = ?, picture = ? WHERE noteID = ?`;
+  return await con.query(sql, [
+    note.creationTime,
+    note.text,
+    note.picture,
+    note.noteID,
+  ]);
+}
+async function deleteNote(note) {
+  let sql = `DELETE FROM notes WHERE noteID = ?`;
+  return await con.query(sql, [note.noteID]);
+}
 
-module.exports = { getAllNotes };
+module.exports = { getAllNotes, addNote, updateNote, deleteNote, createTable };

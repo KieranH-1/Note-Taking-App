@@ -2,8 +2,8 @@
 const express = require("express");
 const app = express();
 
-const userRoutes = require("./server/routes/user");
-const noteRoutes = require("./server/routes/note");
+const userRoutes = require("./routes/user");
+const noteRoutes = require("./routes/note");
 
 //CORS middleware
 app.use(function (req, res, next) {

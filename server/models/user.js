@@ -16,5 +16,33 @@ async function getAllUsers() {
   let sql = `SELECT * FROM users`;
   return await con.query(sql);
 }
+async function login(user) {
+  let sql = `SELECT * FROM users WHERE username = ? AND password = ?`;
+  return await con.query(sql, [user.username, user.password]);
+}
+async function register(user) {
+  let sql = `INSERT INTO users (username, email, password) VALUES (${user.username}, ${user.email}, ${user.password})`;
+  return await con.query(sql);
+}
+async function updateUser(user) {
+  let sql = `UPDATE users SET username = ?, email = ?, password = ? WHERE userID = ?`;
+  return await con.query(sql, [
+    user.username,
+    user.email,
+    user.password,
+    user.userID,
+  ]);
+}
+async function deleteUser(user) {
+  let sql = `DELETE FROM users WHERE userID = ?`;
+  return await con.query(sql, [user.userID]);
+}
 
-module.exports = { getAllUsers };
+module.exports = {
+  getAllUsers,
+  login,
+  register,
+  updateUser,
+  deleteUser,
+  createTable,
+};
