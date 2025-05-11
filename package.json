@@ -2,7 +2,7 @@
   "name": "note-taking-app",
   "version": "1.0.0",
   "description": "simple app for taking notes",
-  "main": "server/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
     "test": "echo \"Error\""

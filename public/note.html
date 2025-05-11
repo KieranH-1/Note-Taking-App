@@ -4,14 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Notes</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
   <nav>
-    <a class="register" href="register.html">Register</a>
-    <a class="notes" href="note.html">Notes</a>
-    <a class="login" href="login.html">Login</a>
   </nav>
 
   <main>
@@ -19,6 +16,10 @@
     <form id="note-form">
       <h1 class="login-logo">Notes</h1>
       <div class="input-boxes">
+        <input type="text" id="date" placeholder="Date"><br><br>
+
+        <input type="text" id="note-picture" placeholder="Picture"><br><br>
+
         <input type="text" id="note-text" placeholder="Note"><br><br>
 
         <input type="submit" id="submit" value="Add Note"></input><br><br>
@@ -26,6 +27,7 @@
     </form>
      <h3 id="note-list"></h3>
   </main>
-  <script src="../models/note.js"></script>
+  <script type="module" src="./scripts/note.js"></script>
+  <script type="module" src="./scripts/main.js"></script>
 </body>
 </html>

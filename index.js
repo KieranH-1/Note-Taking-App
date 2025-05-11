@@ -1,9 +1,12 @@
 // specify we want to use express
 const express = require("express");
 const app = express();
+const path = require("path");
 
-const userRoutes = require("./routes/user");
-const noteRoutes = require("./routes/note");
+app.use(express.json());
+
+const userRoutes = require("./server/routes/user");
+const noteRoutes = require("./server/routes/note");
 
 //CORS middleware
 app.use(function (req, res, next) {
@@ -16,8 +19,15 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(express.static(__dirname + "/public"));
+app.get("/", (req, res) =>
+  res.sendFile(path.join(__dirname, "/public/login.html"))
+);
+
 app.use("/users", userRoutes);
 app.use("/notes", noteRoutes);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}!!`));
+app.listen(PORT, () =>
+  console.log(`Server started on port http://localhost:${PORT}/`)
+);

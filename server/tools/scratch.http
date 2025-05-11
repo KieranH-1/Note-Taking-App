@@ -15,7 +15,22 @@ Content-Type: application/json
   "password": "password123"
 }
 
+###
+DELETE http://localhost:3000/users/deleteAccount
+Content-Type: application/json
 
+{
+  "userID": 2
+}
+
+###
+PUT http://localhost:3000/users/update
+Content-Type: application/json
+
+{
+  "userID": 1,
+  "username": "Johnny_Jetta"
+}
 
 ###########################
 # Notes Controller
@@ -24,3 +39,34 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/notes/getNotes
 
+###
+POST http://localhost:3000/notes/addNote
+Content-Type: application/json
+
+{
+  "text": "This is a new note.",
+  "picture": "http://example.com/image.jpg",
+  "creationTime": "8/10/2023",
+  "userID": 1
+}
+
+###
+DELETE http://localhost:3000/notes/deleteNote
+Content-Type: application/json
+
+{
+  "noteID": 2,
+  "userID": 2
+}
+
+###
+PUT http://localhost:3000/notes/updateNote
+Content-Type: application/json
+
+{
+  "noteID": 2,
+  "userID": 2,
+  "creationTime": "8/11/2023",
+  "text": "This is an updated note.",
+  "picture": "http://example.com/updated_image.jpg"
+}

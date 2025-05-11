@@ -11,39 +11,42 @@ router
       res.status(401).send({ message: err.message });
     }
   })
-  .get("/login", async (req, res) => {
+
+  .post("/login", async (req, res) => {
     try {
       const user = await User.login(req.body);
-      res.send(user);
+      res.send({ ...user, password: undefined });
     } catch (err) {
       res.status(401).send({ message: err.message });
     }
   })
+
   .post("/register", async (req, res) => {
     try {
       const user = await User.register(req.body);
-      res.send(user);
+      res.send({ ...user, password: undefined });
     } catch (err) {
       res.status(401).send({ message: err.message });
     }
   })
-  .put("/updateUser", async (req, res) => {
+
+  .put("/update", async (req, res) => {
     try {
-      const user = await User.updateUser(req.body);
-      res.send(user);
+      console.log(req.body);
+      const user = await User.editUsername(req.body);
+      res.send({ ...user, password: undefined });
     } catch (err) {
       res.status(401).send({ message: err.message });
     }
   })
-  .delete("/deleteUser", async (req, res) => {
+
+  .delete("/deleteAccount", async (req, res) => {
     try {
-      const user = await User.deleteUser(req.body);
-      res.send({ success: `Bye Bye ${user} ` });
+      await User.deleteAccount(req.body);
+      res.send({ success: "Account deleted successfully!" });
     } catch (err) {
       res.status(401).send({ message: err.message });
     }
   });
-
-("http://localhost:3000/users/getUsers");
 
 module.exports = router;

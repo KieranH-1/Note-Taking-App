@@ -27,7 +27,9 @@ nav .login:hover {
   background-color: #555;
 }
 
-nav .register {
+nav .register,
+nav .user,
+nav #logout {
   float: inline-end;
   color: white;
   background-color: #333;
@@ -62,7 +64,10 @@ main {
   align-items: center;
 }
 
-#login-form, #register-form, #note-form {
+#login-form,
+#register-form,
+#note-form,
+#edit-form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -80,7 +85,6 @@ h1 {
 
 .input-boxes {
   display: flex;
-  height: 100px;
   margin: 5px auto;
   padding: 5px;
   flex-wrap: wrap;
@@ -93,17 +97,20 @@ h1 {
 #username,
 #email,
 #password,
-#note {
+#note-picture,
+#date {
   margin: 5px auto;
   padding: 3px;
   border: 1px solid #333;
   border-radius: 4px;
 }
 
-#note {
-  width: 100%;
-  max-width: 100%;
-  min-width: 100%;
+#note-text {
+  margin: 5px auto;
+  padding: 3px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  height: 100px;
 }
 
 #submit,
@@ -117,7 +124,7 @@ h1 {
   color: white;
 }
 
-#submit:hover{
+#submit:hover {
   background-color: #555;
 }
 
@@ -142,4 +149,42 @@ h1 {
   margin: 0 auto;
   padding: 20px;
   margin-top: 25px;
+}
+
+.note {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin-top: 25px;
+}
+
+.note img {
+  width: 100px;
+  height: 100px;
+}
+
+.note-text {
+  margin: 0 auto;
+  padding: 20px;
+  font-weight: bold;
+  color: grey;
+}
+
+.note-date {
+  margin: 0 auto;
+  padding: 20px;
+  font-weight: bold;
+  color: grey;
+}
+
+.note-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 0 auto;
+  padding: 20px;
 }

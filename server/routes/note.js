@@ -3,9 +3,9 @@ const Note = require("../models/note");
 const router = express.Router();
 
 router
-  .get("/getNotes", async (req, res) => {
+  .post("/getNotes", async (req, res) => {
     try {
-      const notes = await Note.getAllNotes();
+      const notes = await Note.getNotes(req.body);
       res.send(notes);
     } catch (err) {
       res.status(401).send({ message: err.message });

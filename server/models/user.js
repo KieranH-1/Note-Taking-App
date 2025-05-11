@@ -12,37 +12,73 @@ async function createTable() {
 }
 createTable();
 
+// CRUD Operations
 async function getAllUsers() {
   let sql = `SELECT * FROM users`;
   return await con.query(sql);
 }
+
+// READ in CRUD: Logging in a user
 async function login(user) {
-  let sql = `SELECT * FROM users WHERE username = ? AND password = ?`;
-  return await con.query(sql, [user.username, user.password]);
-}
-async function register(user) {
-  let sql = `INSERT INTO users (username, email, password) VALUES (${user.username}, ${user.email}, ${user.password})`;
-  return await con.query(sql);
-}
-async function updateUser(user) {
-  let sql = `UPDATE users SET username = ?, email = ?, password = ? WHERE userID = ?`;
-  return await con.query(sql, [
-    user.username,
-    user.email,
-    user.password,
-    user.userID,
-  ]);
-}
-async function deleteUser(user) {
-  let sql = `DELETE FROM users WHERE userID = ?`;
-  return await con.query(sql, [user.userID]);
+  let cUser = await userExists(user.username);
+  if (!cUser[0]) throw Error("Username does not exist!");
+  if (cUser[0].password != user.password) throw Error("Password is incorrect!");
+
+  return cUser[0];
 }
 
-module.exports = {
-  getAllUsers,
-  login,
-  register,
-  updateUser,
-  deleteUser,
-  createTable,
+async function userExists(username) {
+  let sql = `
+    SELECT * FROM users
+    WHERE username="${username}"
+  `;
+  return await con.query(sql);
+}
+
+// CREATE in CRUD - Registering a user
+async function register(user) {
+  const cUser = await userExists(user.username);
+  if (cUser.length > 0) throw Error("Username already in use!");
+
+  let sql = `
+    INSERT INTO users(password, username, email)
+    VALUES("${user.password}", "${user.username}", "${user.email}")
+  `;
+  await con.query(sql);
+
+  return await login(user);
+}
+
+async function editUsername(user) {
+  let sql = `
+    UPDATE users SET
+    username = "${user.username}"
+    WHERE userId = ${user.userID}
+  `;
+  await con.query(sql);
+  const currentUser = await userExists(user.username);
+  return currentUser[0];
+}
+
+// USER Example:
+const user = {
+  username: "Bobbyiscool",
+  email: "b@b",
+  password: "cathysucks",
 };
+async function deleteAccount(user) {
+  let sql = `
+    SELECT * FROM users
+    WHERE userID = ${user.userID}
+  `;
+  let cUser = await con.query(sql);
+  if (!cUser[0]) throw Error("User does not exist!");
+
+  sql = `
+    DELETE FROM users
+    WHERE userID = ${user.userID}
+  `;
+  await con.query(sql);
+}
+
+module.exports = { getAllUsers, login, register, editUsername, deleteAccount };
